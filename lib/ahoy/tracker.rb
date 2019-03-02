@@ -44,9 +44,9 @@ module Ahoy
         debug "Missing required parameters"
       else
         if defer
-          set_cookie("ahoy_track", true, nil, false)
+          set_cookie("adr_track", true, nil, false)
         else
-          delete_cookie("ahoy_track")
+          delete_cookie("adr_track")
 
           data = {
             visit_token: visit_token,
@@ -114,12 +114,12 @@ module Ahoy
     end
 
     def set_visit_cookie
-      set_cookie("ahoy_visit", visit_token, Ahoy.visit_duration)
+      set_cookie("adr_visit", visit_token, Ahoy.visit_duration)
     end
 
     def set_visitor_cookie
       if new_visitor?
-        set_cookie("ahoy_visitor", visitor_token, Ahoy.visitor_duration)
+        set_cookie("adr_visitor", visitor_token, Ahoy.visitor_duration)
       end
     end
 
@@ -144,13 +144,13 @@ module Ahoy
 
     def reset
       reset_visit
-      delete_cookie("ahoy_visitor")
+      delete_cookie("adr_visitor")
     end
 
     def reset_visit
-      delete_cookie("ahoy_visit")
-      delete_cookie("ahoy_events")
-      delete_cookie("ahoy_track")
+      delete_cookie("adr_visit")
+      delete_cookie("adr_events")
+      delete_cookie("adr_track")
     end
 
     protected
@@ -250,11 +250,11 @@ module Ahoy
     end
 
     def visit_cookie
-      @visit_cookie ||= request && request.cookies["ahoy_visit"]
+      @visit_cookie ||= request && request.cookies["adr_visit"]
     end
 
     def visitor_cookie
-      @visitor_cookie ||= request && request.cookies["ahoy_visitor"]
+      @visitor_cookie ||= request && request.cookies["adr_visitor"]
     end
 
     def visit_header
